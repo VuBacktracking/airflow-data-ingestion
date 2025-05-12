@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  postgresql:
+      image: postgres:latest
+      command: ["postgres", "-c", "wal_level=logical"]
+      container_name: dw-postgresql
+      healthcheck:
+        test: ["CMD", "psql", "-U", "v9", "-c", "SELECT 1"]
+        interval: 10s
+        timeout: 5s
+        retries: 5
+      ports:
+        - "5432:5432"
+      environment:
+        - POSTGRES_DB=v9
+        - POSTGRES_USER=v9
+        - POSTGRES_PASSWORD=v9
+      volumes:
+        - dw_postgres_data:/var/lib/postgresql/data
+
+  volumes:
+    dw_postgres_data:
