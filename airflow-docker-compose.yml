@@ -35,7 +35,7 @@ x-airflow-common: &airflow-common
     - ./data:/opt/airflow/data
     - ./scripts:/opt/airflow/dags/scripts
     - ./utils:/opt/airflow/dags/utils
-    - ./jars:/opt/airflow/dags/scripts/jars
+    - ./jars:/opt/airflow/dags/jars
     # - ./requirements.txt:/requirements.txt
     - //var/run/docker.sock:/var/run/docker.sock
   user: "${AIRFLOW_UID:-50000}:0"
