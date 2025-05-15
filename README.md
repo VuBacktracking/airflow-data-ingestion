@@ -2,11 +2,10 @@
 
 ## Architecture
 
-
 ## Tasks
-- [x] Design overall data pipeline architecture (Docker, EC2, S3, Delta Lake, Trino)
+- [x] Design overall data pipeline architecture
 - [x] Define and configure Airflow DAG for orchestration
-    - [x] Extract and load raw taxi data (yellow/green) to Amazon S3
+    - [x] Extract and load raw taxi data to Amazon S3
     - [ ] Transform raw data into structured format
     - [x] Convert transformed data to Delta format
 - [ ] Configure Trino to connect to Delta Lake on S3
@@ -17,6 +16,8 @@
 - [ ] Set up CI for Pull Requests (e.g., GitHub Actions)
 
 ## Pipeline
+
+## Prequisites
 
 ## Troubeshoot
 
