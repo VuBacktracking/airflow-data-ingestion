@@ -14,29 +14,29 @@ def download_taxi_data(taxi_type, execution_date):
     save_path = os.path.join(save_dir, file_name)
 
     if os.path.exists(save_path):
-        print(f"✅ File already exists: {save_path}")
+        print(f"File already exists: {save_path}")
         return
 
     # HEAD check
     try:
         head = requests.head(url, timeout=10)
         if head.status_code != 200:
-            print(f"❌ File not available (HTTP {head.status_code}): {url}")
+            print(f"File not available (HTTP {head.status_code}): {url}")
             return
     except Exception as e:
-        print(f"❌ HEAD request failed: {url} - {e}")
+        print(f"HEAD request failed: {url} - {e}")
         return
 
     # Download
     try:
-        print(f"⬇️  Downloading: {url}")
+        print(f"Downloading: {url}")
         response = requests.get(url, stream=True, timeout=60)
         if response.status_code == 200:
             with open(save_path, 'wb') as f:
                 for chunk in response.iter_content(chunk_size=8192):
                     f.write(chunk)
-            print(f"✅ Download completed: {save_path}")
+            print(f"Download completed: {save_path}")
         else:
-            print(f"❌ Download failed: HTTP {response.status_code}")
+            print(f"Download failed: HTTP {response.status_code}")
     except Exception as e:
-        print(f"❌ Download error: {url} - {e}")
+        print(f"Download error: {url} - {e}")
