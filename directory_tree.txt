@@ -1,0 +1,25 @@
+├── airflow
+│   ├── config
+│   ├── dags
+│   │   ├── etl.py
+│   │   ├── scripts
+│   │   └── utils
+│   ├── include
+│   ├── plugins
+│   └── requirements.txt
+├── airflow-docker-compose.yml
+├── data
+│   ├── green
+│   └── yellow
+├── directory_tree.md
+├── docker-compose.yml
+├── jars
+├── Makefile
+├── README.md
+├── requirements.txt
+├── scripts
+│   ├── extract.py
+│   └── validate.py
+│   └── load.py
+├── terraform
+└── utils
