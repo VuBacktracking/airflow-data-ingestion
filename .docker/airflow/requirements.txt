@@ -1,0 +1,6 @@
+dotenv
+pandas
+requests
+boto3
+botocore
+s3fs
