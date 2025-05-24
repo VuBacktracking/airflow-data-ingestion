@@ -1,22 +1,32 @@
 version: "3.8"
 services:
   postgresql:
-      image: postgres:latest
-      command: ["postgres", "-c", "wal_level=logical"]
-      container_name: dw-postgresql
-      healthcheck:
-        test: ["CMD", "psql", "-U", "v9", "-c", "SELECT 1"]
-        interval: 10s
-        timeout: 5s
-        retries: 5
-      ports:
-        - "5432:5432"
-      environment:
-        - POSTGRES_DB=v9
-        - POSTGRES_USER=v9
-        - POSTGRES_PASSWORD=v9
-      volumes:
-        - dw_postgres_data:/var/lib/postgresql/data
+    image: postgres:latest
+    command: ["postgres", "-c", "wal_level=logical"]
+    container_name: postgresql
+    healthcheck:
+      test: ["CMD", "psql", "-U", "v9", "-c", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=v9
+      - POSTGRES_USER=v9
+      - POSTGRES_PASSWORD=v9
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
+  trino:
+    ports:
+      - "8084:8080"
+    container_name: trino
+    image: "trinodb/trino:410"
+    hostname: trino
+    volumes:
+      - ./trino/etc:/usr/lib/trino/etc:ro
+      - ./trino/catalog:/etc/trino/catalog
 
-  volumes:
-    dw_postgres_data:
+volumes:
+  postgres_data:
