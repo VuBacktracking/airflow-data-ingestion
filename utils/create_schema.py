@@ -5,7 +5,7 @@ from postgresql_client import PostgresSQLClient
 from pathlib import Path
 
 # Load environment variables from the .env file
-dotenv_path = Path(__file__).resolve().parent / ".env"
+dotenv_path = Path(__file__).resolve().parent.parent / ".env"
 load_dotenv(".env")
 
 def main():

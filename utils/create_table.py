@@ -50,7 +50,7 @@ def main():
             total_amount            FLOAT, 
             improvement_surcharge   FLOAT, 
             congestion_surcharge    FLOAT,
-            service_type            INT,
+            service_type            INT
         );
     """
 

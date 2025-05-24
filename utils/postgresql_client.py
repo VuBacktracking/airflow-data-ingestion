@@ -26,6 +26,11 @@ class PostgresSQLClient:
         # Creating a cursor object using the cursor() method
         return conn
     
+    def get_sqlalchemy_engine(self):
+        return create_engine(
+            f"postgresql+psycopg2://{self.user}:{self.password}@{self.host}:{self.port}/{self.database}"
+        )
+    
     def execute_query(self, query):
         conn = self.create_conn()
         cursor = conn.cursor()
